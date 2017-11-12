@@ -1,4 +1,5 @@
 #include <unordered_set>
+#include <algorithm>
 #include <iostream>
 #include <vector>
 
@@ -30,9 +31,29 @@ int main() {
                 l.push_back(s[0]);
             }
 
+            for(int k = 0; k < 26; k++) {
+                if(k == s[j-1]-'a') {
+                    continue;
+                }
+                if(graph[s[j]-'a'][k] == 1) {
+                    cout << "NO" << endl;
+                    return 0;
+                }
+            }
+
+            for(int k = 0; k < 26; k++) {
+                if(k == s[j]-'a') {
+                    continue;
+                }
+                if(graph[k][s[j-1]-'a'] == 1) {
+                    cout << "NO" << endl;
+                    return 0;
+                }
+            }
             graph[s[j]-'a'][s[j-1]-'a'] = 1;
         }
     }
+    vector<vector<int>> graph2 = graph;
 
     int size = 26;
 
@@ -67,6 +88,18 @@ int main() {
             return 0;
         }
         else {
+            if(zerocol.size() > 1) {
+                for(int i = 0; i < 26; i++) {
+                    if(output.size() == 0) {
+                        break;
+                    }
+                    if(graph2[i][output.back()-'a'] == 1) {
+                        int loc = distance(zerocol.begin(), find(zerocol.begin(), zerocol.end(), i));
+                        swap(zerocol[loc], zerocol[0]);
+                        break;
+                    }
+                }
+            }
             output.push_back(zerocol[0] + 'a');
             skip.insert(zerocol[0]);
             for(int i = 0; i < size; i++) {
