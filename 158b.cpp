@@ -17,11 +17,36 @@ int main() {
 
     int total = v[4];
 
-    total[4] += total[3];
-    total[1] -= total[3];
-    total[1] = max(total[1], 0);
-    total[4] += total[3];
-    total[3] = 0;
+    while(v[3] > 0 || v[2] > 0 || v[1] > 0) {
+        total++;
+
+        if(v[3] > 0) {
+            v[3]--;
+            if(v[1] > 0) {
+                v[1]--;
+            }
+            continue;
+        }
+
+        if(v[2] > 0) {
+            v[2]--;
+            if(v[2] > 0) {
+                v[2]--;
+                continue;
+            }
+            if(v[1] > 0) {
+                v[1]--;
+            }
+            if(v[1] > 0) {
+                v[1]--;
+            }
+            continue;
+        }
+
+        if(v[1] > 0) {
+            v[1] -= 4;
+        }
+    }
 
     cout << total << endl;
 }
