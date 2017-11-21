@@ -1,7 +1,7 @@
-#include <unordered_map>
-#include <unordered_set>
 #include <iostream>
 #include <vector>
+#include <map>
+#include <set>
 
 using namespace std;
 
@@ -9,7 +9,7 @@ int main() {
     int n, m;
     cin >> n >> m;
 
-    unordered_map<int, unordered_set<int>> s;
+    map<int, set<int>> s;
 
     vector<int> v(n);
     for(auto& i : v) {
