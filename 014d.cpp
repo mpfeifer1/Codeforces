@@ -43,16 +43,14 @@ int getlen(vector<vector<int>>& adj, int ban1, int ban2) {
     // Find best on left
     int bestl = 0;
     for(auto i : l) {
-        vis.clear();
-        vis.resize(n, false);
+        fill(vis.begin(), vis.end(), false);
         bestl = max(bestl, dfs(adj, vis, i, ban1, ban2));
     }
 
     // Find best on right
     int bestr = 0;
     for(auto i : r) {
-        vis.clear();
-        vis.resize(n, false);
+        fill(vis.begin(), vis.end(), false);
         bestr = max(bestr, dfs(adj, vis, i, ban1, ban2));
     }
 
