@@ -11,21 +11,22 @@ int main() {
         cin >> i;
         if(i == 1) {
             ones++;
+            i = -1;
+        }
+        else {
+            i = 1;
         }
     }
 
     int best = -1;
-    for(int i = 0; i < n; i++) {
-        int increase = 0;
-        for(int j = i; j < n; j++) {
-            if(v[j] == 0) {
-                increase++;
-            }
-            else {
-                increase--;
-            }
-            best = max(increase, best);
+    int curr = 0;
+    for(auto i : v) {
+        curr += i;
+        best = max(best, curr);
+        if(curr < 0) {
+            curr = 0;
         }
+
     }
 
     cout << ones + best << endl;
