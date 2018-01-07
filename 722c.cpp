@@ -20,14 +20,14 @@ void join(ll* d, int a, int b) {
         return;
     }
 
-    ll val = d[a] + d[b];
+    ll val = d[a] + d[b] + 1;
     d[a] = val;
     d[b] = a;
 }
 
 ll val(ll* d, int a) {
     a = find(d, a);
-    return -d[a];
+    return -d[a] - 1;
 }
 
 int main() {
@@ -37,11 +37,11 @@ int main() {
     ll d[100001];
     for(int i = 0; i < n; i++) {
         cin >> d[i];
-        d[i] = -d[i];
+        d[i] = -(d[i]+1);
     }
 
     stack<int> q;
-    stack<int> a;
+    stack<ll> a;
 
     for(int i = 0; i < n; i++) {
         int temp;
@@ -68,11 +68,6 @@ int main() {
         if(curr+1 < n && seen[curr+1]) {
             join(d, curr+1, curr);
         }
-
-        for(int i = 0; i < n; i++) {
-            cout << d[i] << " ";
-        }
-        cout << endl;
 
         best = max(best, val(d, curr));
     }
