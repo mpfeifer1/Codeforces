@@ -14,8 +14,8 @@ typedef unsigned int uint;
 typedef unsigned long long ull;
 
 const ld  pi   = 4.0*atanl(1.0);
-const int iinf = 2147483647;
-const ll  inf  = 9223372036854775807ll;
+const int iinf = 1e9 + 10;
+const ll  inf  = 1e18 + 10;
 const int mod  = 1000000007;
 
 #define endl '\n'
