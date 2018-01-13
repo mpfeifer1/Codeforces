@@ -39,7 +39,7 @@ void fast() {
 
 void file() {
     auto a = freopen("a.in",  "r", stdin);
-    auto b = freopen("a.out", "w", stdout);
+    auto b =  freopen("a.out", "w", stdout);
     if(!a || !b) cout << "uh oh" << endl;
 }
 
@@ -51,6 +51,40 @@ int main() {
     //file();
     //fast();
 
+    int n, pos, l, r;
+    cin >> n >> pos >> l >> r;
 
+    int l1 = l;
+    int r1 = r;
+    int pos1 = pos;
+    int total1 = 0;
+    if(l1 > 1) {
+        total1 += abs(pos1 - l1);
+        total1++;
+        pos1 = l1;
+    }
+
+    if(r1 < n) {
+        total1 += abs(pos1 - r1);
+        total1++;
+    }
+
+    int l2 = l;
+    int r2 = r;
+    int pos2 = pos;
+    int total2 = 0;
+
+    if(r2 < n) {
+        total2 += abs(pos2 - r2);
+        total2++;
+        pos2 = r2;
+    }
+
+    if(l2 > 1) {
+        total2 += abs(pos2 - l2);
+        total2++;
+    }
+
+    cout << min(total1, total2) << endl;
 
 }

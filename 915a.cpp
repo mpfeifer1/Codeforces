@@ -51,6 +51,18 @@ int main() {
     //file();
     //fast();
 
+    ll n, k;
+    cin >> n >> k;
 
+    ll best = 0;
 
+    vector<ll> c(n);
+    for(auto& i : c) {
+        cin >> i;
+        if(k % i == 0 && i > best) {
+            best = i;
+        }
+    }
+
+    cout << k/best << endl;
 }
