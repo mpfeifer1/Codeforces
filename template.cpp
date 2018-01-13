@@ -1,5 +1,5 @@
 // Michael Pfeifer
-// Version 01, 2018/01/12
+// Version 02, 2018/01/12
 
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
@@ -20,7 +20,7 @@ const int mod  = 1000000007;
 
 #define endl '\n'
 #define pb push_back
-#define D(x) cout<<#x<<" -> "<<x<<'\n'
+#define debug(x) cout<<#x<<" -> "<<x<<'\n'
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
 #define uni(x) (x).erase(unique(all(x)), (x).end())
@@ -32,10 +32,25 @@ using indexed_set = tree<
         TIn, null_type, less<TIn>,
         rb_tree_tag, tree_order_statistics_node_update>;
 
+void fast() {
+    ios::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
+}
+
+void file() {
+    auto a = freopen("a.in",  "r", stdin);
+    auto b =  freopen("a.out", "w", stdout);
+    if(!a || !b) cout << "uh oh" << endl;
+}
+
 
 
 
 
 int main() {
+    //file();
+    //fast();
+
+
 
 }
