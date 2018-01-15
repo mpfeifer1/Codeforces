@@ -153,7 +153,7 @@ bool dfs(vector<vector<int>>& adj, bool detect) {
 
 int main() {
     //file();
-    //fast();
+    fast();
 
     // Build graph
     cin >> n >> m;
@@ -176,14 +176,6 @@ int main() {
         cout << "YES" << endl;
         return 0;
     }
-
-    // Debugging - print all edges in cycle
-    /*
-    for(int i = 0; i < cycle.size(); i++) {
-        cout << cycle[i]+1 << " ";
-    }
-    cout << endl;
-    */
 
     // For every cycle edge, set forbidden
     for(int i = 1; i < cycle.size(); i++) {
