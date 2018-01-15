@@ -43,6 +43,27 @@ void file() {
     if(!a || !b) cout << "uh oh" << endl;
 }
 
+ll readint(){
+    char r;
+    bool start=false,neg=false;
+    ll ret=0;
+    while(true){
+        r=getchar();
+        if((r-'0'<0 || r-'0'>9) && r!='-' && !start){
+            continue;
+        }
+        if((r-'0'<0 || r-'0'>9) && r!='-' && start){
+            break;
+        }
+        if(start)ret*=10;
+        start=true;
+        if(r=='-')neg=true;
+        else ret+=r-'0';
+    }
+    if(!neg) return ret;
+    else return -ret;
+}
+
 
 
 
