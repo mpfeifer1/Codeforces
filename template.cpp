@@ -18,6 +18,7 @@ const int iinf = 1e9 + 10;
 const ll  inf  = 1e18 + 10;
 const int mod  = 1000000007;
 
+#define enld endl
 #define endl '\n'
 #define pb push_back
 #define debug(x) cout<<#x<<" -> "<<x<<'\n'
