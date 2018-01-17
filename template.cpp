@@ -1,5 +1,5 @@
 // Michael Pfeifer
-// Version 02, 2018/01/12
+// Version 02, 2018/01/17
 
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
@@ -27,6 +27,8 @@ const int mod  = 1000000007;
 #define uni(x) (x).erase(unique(all(x)), (x).end())
 #define rep(i, n) for (ll i = 0; i < (ll)(n); ++i)
 #define rep1(i, n) for (ll i = 1; i <= (ll)(n); ++i)
+#define umap unordered_map;
+#define uset unordered_set;
 
 template<class TIn>
 using indexed_set = tree<
