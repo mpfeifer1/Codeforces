@@ -71,10 +71,71 @@ ll readint(){
 
 
 
+struct node {
+    int val, l, r;
+};
+
+unordered_set<int> seen;
+
+void dfs(vector<node>& v, int curr, int lo, int hi) {
+    if(v[curr].val > lo && v[curr].val < hi) {
+        seen.insert(v[curr].val);
+    }
+
+    if(v[curr].l >= 0) {
+        int next = v[curr].l;
+        dfs(v, next, lo, min(hi,v[curr].val));
+    }
+    if(v[curr].r >= 0) {
+        int next = v[curr].r;
+        dfs(v, next, max(lo,v[curr].val), hi);
+    }
+}
+
 int main() {
     //file();
-    //fast();
+    fast();
 
+    int n;
+    cin >> n;
 
+    vector<node> v(n);
+    vector<int> deg(n, 0);
 
+    unordered_map<int,int> vals;
+
+    for(auto& i : v) {
+        cin >> i.val >> i.l >> i.r;
+        i.l--;
+        i.r--;
+
+        vals[i.val]++;
+
+        if(i.l >= 0) {
+            deg[i.l]++;
+        }
+        if(i.r >= 0) {
+            deg[i.r]++;
+        }
+    }
+
+    int start = -1;
+    for(int i = 0; i < n; i++) {
+        if(deg[i] == 0) {
+            start = i;
+        }
+    }
+
+    dfs(v, start, -iinf, iinf);
+
+    // Calculate total
+    for(auto i : seen) {
+        vals.erase(i);
+    }
+    int total = 0;
+    for(auto i : vals) {
+        total += i.second;
+    }
+
+    cout << total << endl;
 }
