@@ -86,18 +86,12 @@ int main() {
         ll t;
         cin >> t;
 
-        ans += i * t - prefix;
+        // Our num * #previous numbers - prefixsum
+        ans += t * i - prefix;
         prefix += t;
 
-        // Subtract out lower
-        if(cnt.count(t-1) > 0) {
-            ans -= cnt[t-1];
-        }
-
-        // Add in higher
-        if(cnt.count(t+1) > 0) {
-            ans += cnt[t+1];
-        }
+        ans -= cnt[t-1];
+        ans += cnt[t+1];
 
         cnt[t]++;
     }
@@ -105,5 +99,4 @@ int main() {
     cout << fixed;
     cout.precision(0);
     cout << ans << endl;
-
 }
