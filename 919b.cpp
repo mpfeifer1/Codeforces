@@ -90,7 +90,7 @@ int main() {
     int seen = 0;
     int ans = 1;
     while(seen < n) {
-        ans++;
+        ans+=9;
         if(works(ans)) {
             seen++;
         }
