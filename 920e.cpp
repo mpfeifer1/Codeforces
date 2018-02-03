@@ -71,40 +71,29 @@ ll readint(){
 
 
 
-int find(vector<int>& d, int a) {
-    if(d[a] < 0) {
-        return a;
+int n, m;
+
+int dfs(vector<set<int>>& adj, set<int>& unseen, int curr) {
+    int size = 1;
+    unseen.erase(curr);
+
+    for(auto it = unseen.begin(); it != unseen.end();) {
+        int next = *it;
+        if(adj[curr].count(next) == 0) {
+            size += dfs(adj, unseen, next);
+        }
+        it = unseen.lower_bound(next+1);
     }
 
-    d[a] = find(d, d[a]);
-    return d[a];
-}
-
-void join(vector<int>& d, int a, int b) {
-    a = find(d, a);
-    b = find(d, b);
-
-    if(a == b) {
-        return;
-    }
-
-    d[a] += d[b];
-    d[b] = a;
-}
-
-int size(vector<int>& d, int a) {
-    a = find(d, a);
-    return -d[a];
+    return size;
 }
 
 int main() {
     //file();
     fast();
 
-    int n, m;
     cin >> n >> m;
-
-    vector<uset<int>> adj(n);
+    vector<set<int>> adj(n);
     for(int i = 0; i < m; i++) {
         int n1, n2;
         cin >> n1 >> n2;
@@ -113,45 +102,17 @@ int main() {
         adj[n2].insert(n1);
     }
 
-    vector<pair<int,int>> sortme;
+    set<int> unseen;
     for(int i = 0; i < n; i++) {
-        sortme.pb({adj[i].size(), i});
-    }
-    sort(rall(sortme));
-
-    vector<int> d(n, -1);
-    vector<bool> vis(n, false);
-    for(auto& thing : sortme) {
-        int i = thing.second;
-        if(vis[i]) {
-            continue;
-        }
-        vis[i] = true;
-
-        for(int j = 0; j < n; j++) {
-            if(i == j) {
-                continue;
-            }
-            if(adj[i].count(j) == 0) {
-                vis[j] = true;
-                join(d, i, j);
-            }
-        }
+        unseen.insert(i);
     }
 
     vector<int> sizes;
     for(int i = 0; i < n; i++) {
-        if(d[i] < 0) {
-            sizes.pb(-d[i]);
+        if(unseen.count(i) > 0) {
+            sizes.pb(dfs(adj, unseen, i));
         }
     }
-
-    /*
-    for(auto& i : d) {
-        cout << i << " ";
-    }
-    cout << endl;
-    */
 
     sort(all(sizes));
     cout << sizes.size() << endl;
