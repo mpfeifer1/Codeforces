@@ -71,11 +71,7 @@ ll readint(){
 
 
 
-int g(int n) {
-    if(n < 10) {
-        return n;
-    }
-
+int prev(int n) {
     int ret = 1;
     while(n > 0) {
         if(n%10 > 0) {
@@ -83,16 +79,26 @@ int g(int n) {
         }
         n /= 10;
     }
-    return g(ret);
+    return ret;
 }
 
 int main() {
     //file();
-    //fast();
+    fast();
+
+    vector<int> dp(1000001, 0);
+    for(int i = 0; i <= 1000000; i++) {
+        if(i < 10) {
+            dp[i] = i;
+        }
+        else {
+            dp[i] = dp[prev(i)];
+        }
+    }
 
     vector<indexed_set<int>> s(10);
     for(int i = 1; i <= 1000000; i++) {
-        s[g(i)].insert(i);
+        s[dp[i]].insert(i);
     }
 
     int n;
