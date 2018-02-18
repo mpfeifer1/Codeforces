@@ -1,5 +1,5 @@
 // Michael Pfeifer
-// Version 03, 2018/01/30
+// Version 03, 2018/01/17
 
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
@@ -17,6 +17,7 @@ const ld  pi   = 4.0*atanl(1.0);
 const int iinf = 1e9 + 10;
 const ll  inf  = 1e18 + 10;
 const int mod  = 1000000007;
+const ld  prec = .000001;
 
 #define enld endl
 #define endl '\n'
@@ -44,27 +45,6 @@ void file() {
     auto a = freopen("a.in",  "r", stdin);
     auto b = freopen("a.out", "w", stdout);
     if(!a || !b) cout << "uh oh" << endl;
-}
-
-ll readint(){
-    char r;
-    bool start=false,neg=false;
-    ll ret=0;
-    while(true){
-        r=getchar();
-        if((r-'0'<0 || r-'0'>9) && r!='-' && !start){
-            continue;
-        }
-        if((r-'0'<0 || r-'0'>9) && r!='-' && start){
-            break;
-        }
-        if(start)ret*=10;
-        start=true;
-        if(r=='-')neg=true;
-        else ret+=r-'0';
-    }
-    if(!neg) return ret;
-    else return -ret;
 }
 
 
