@@ -15,7 +15,7 @@ typedef unsigned long long ull;
 
 const ld  pi   = 4.0*atanl(1.0);
 const int iinf = 1e9 + 10;
-const ll  inf  = 1e18 + 10;
+const ll  inf  = 1e18 + iinf + 10;
 const int mod  = 1000000007;
 const ld  prec = .000001;
 
